@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <title>ToDo Manager</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  </head>
+  {% with messages = get_flashed_messages() %}  
+         {% if messages %}  
+               {% for message in messages %}  
+                    <p>{{ message }}</p>  
+               {% endfor %}  
+         {% endif %}  
+  {% endwith %}  
+  
+  
+  <body>
+  
+    {% block main%}
+    hi </br><a href='/login'>login here</a> </br> <a href='/register'>Register here</a>
+    {% endblock %}
+  </body>  
+</html>

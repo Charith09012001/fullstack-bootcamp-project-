@@ -14,7 +14,8 @@ insert into task_status(name,status) values ('Completed',FALSE);
 
 create table users(
     id serial primary key,
-    username text,
+    usermail varchar(50),
+    username text ,
     pass varchar(20)
 );
 
@@ -23,6 +24,6 @@ create table tasks(
     user_id int,
     task_name text,
     added_on date,
-    due_datetime datetime,
+    due_datetime date,
     status serial references task_status(id)
 );

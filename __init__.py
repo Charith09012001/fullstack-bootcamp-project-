@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,url_for,flash
 
 
 
@@ -9,12 +9,20 @@ def create_app():
     app.config.from_mapping(
     DATABASE = 'todo'
     )
+    app.secret_key="123"
+    from . import login
+    app.register_blueprint(login.bp)
+    
+    from . import db
+    db.init_app(app)
+    
+    from . import register
+    app.register_blueprint(register.bp)   
     
     @app.route("/")
     def frontpage():
-        return "hi"
+        return render_template("index.html")
         
-    from . import login
-    app.register_blueprint(login.bp)
+    
     
     return app

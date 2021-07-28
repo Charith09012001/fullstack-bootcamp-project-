@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+    {% block main %}
+         
+<form action={{url_for("register.register")}} method="POST">    
+  <div class="mb-3 row">
+   <label  class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+   <input type="text" name="user_email" required>
+    </div>
+  </div>
+ <div class="mb-3 row">
+   <label  class="col-sm-2 col-form-label">UserName</label>
+    <div class="col-sm-10">
+   <input type="text" name="user_name" required>
+    </div>
+ </div>
+  <div class="mb-3 row">
+    <label class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" name="pass" required>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+    
+    {% endblock %}
