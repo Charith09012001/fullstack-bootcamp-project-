@@ -23,8 +23,9 @@ def validate():
         flash("user not defined. Please register first")
         return redirect(url_for("register.register"))
     if request.method=='POST' and password ==pass_check:
-        flash("You are logged in")
-        return redirect(url_for("frontpage"))
+        cur.execute("select id from users where usermail=%s",(username,))
+        uid=cur.fetchone()[0]
+        return redirect(url_for("todo.todolist",uid=uid))
     flash(f"Invalid username or Password {pass_check}")
     return redirect(url_for("login.loginform"))
     

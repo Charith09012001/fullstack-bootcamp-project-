@@ -19,9 +19,19 @@
   
   
   <body>
-  
-    {% block main%}
-    hi </br><a href='/login'>login here</a> </br> <a href='/register'>Register here</a>
-    {% endblock %}
-  </body>  
+    <div class="container">
+      <div class="row">
+        <div class="sidebar col-3">
+          <a href="/"><img src={{url_for('static', filename='logo.png')}}/></a>
+        </div>
+        <div class="main col-8">
+          {% block main %}
+          <h3>Welcome to ToDo List Manager</h3>
+          <a href={{url_for("login.loginform")}}><button class="btn btn-primary">Login</button></a>
+          <p>If you are here for first time,<a href={{url_for("register.register")}}><button class="btn btn-primary">Register</button></a></p>
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+    </body>
 </html>

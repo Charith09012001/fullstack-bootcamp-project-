@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block main %}
+          <h4 class="display-4">Your TODO List</h4>
+          <p>
+            <table class="table table-striped">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col"> #</th>
+                <th scope="col"> Task  </th>
+                <th scope="col"> <a href="/?order_by=added_on&order={{order}}">Added on</a>  </th>
+                <th scope="col"> <a href="/?order_by=due_datetime&order={{order}}">Due date</a> </th>
+                <th scope="col"> current Status </th>
+                
+                              </tr>
+              </thead>
+              {% for id,task_name, added_on, due_datetime,status in tasks %}
+              <tr>              
+                <td scope="row" class="taskid" >{{id}}</td>
+                <td class="task_name">{{task_name}}</td>
+                <td class="added_on">{{added_on}}</td>
+                <td class="due_datetime">{{due_datetime}}</td>
+                <td class="status">{{status}}</td>
+                
+              </tr>
+              {%endfor%}
+            </table>
+            <a href={{url_for("todo.addtask",uid=uid)}}><button class="btn btn-primary">ADD TASK</button></a>
+          </p>
+{% endblock %}

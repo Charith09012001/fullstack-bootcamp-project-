@@ -13,7 +13,7 @@ insert into task_status(name,status) values ('in progress',FALSE);
 insert into task_status(name,status) values ('Completed',FALSE);
 
 create table users(
-    id serial primary key,
+    id varchar(100) primary key,
     usermail varchar(50),
     username text ,
     pass varchar(20)
@@ -21,9 +21,11 @@ create table users(
 
 create table tasks(
     id serial primary key,
-    user_id int,
+    user_id varchar(100) references users(id),
     task_name text,
+    task_description text,
     added_on date,
     due_datetime date,
     status serial references task_status(id)
+    
 );
