@@ -7,19 +7,25 @@
               <tr>
                 <th scope="col"> #</th>
                 <th scope="col"> Task  </th>
-                <th scope="col"> <a href="/?order_by=added_on&order={{order}}">Added on</a>  </th>
-                <th scope="col"> <a href="/?order_by=due_datetime&order={{order}}">Due date</a> </th>
+                <th scope="col"> Added on  </th>
+                <th scope="col"> Due date </th>
+                <th scope="col"> Due time </th>
                 <th scope="col"> current Status </th>
+                <th scope="col"> Edit task </th>
+                <th scope="col"> Delete task </th>
                 
                               </tr>
               </thead>
-              {% for id,task_name, added_on, due_datetime,status in tasks %}
+              {% for id,task_name, added_on, due_date,due_time,status in tasks %}
               <tr>              
                 <td scope="row" class="taskid" >{{id}}</td>
                 <td class="task_name">{{task_name}}</td>
                 <td class="added_on">{{added_on}}</td>
-                <td class="due_datetime">{{due_datetime}}</td>
+                <td class="due_date">{{due_date}}</td>
+                <td class="due_time">{{due_time}}</td>
                 <td class="status">{{status}}</td>
+                <td class="edit_task"><a href={{url_for("todo.EditTask",uid=uid,tid=id)}}><button class="btn btn-info btn-sm">Edit Task</button></a></td>
+                <td class="delete_task"><a href={{url_for("todo.DelTask",uid=uid,tid=id)}}><button class="btn btn-danger btn-sm">Delete Task</button></a></td>
                 
               </tr>
               {%endfor%}

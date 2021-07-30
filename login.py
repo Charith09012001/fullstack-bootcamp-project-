@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask import request,render_template,url_for,redirect,flash
 
-bp = Blueprint("login","login",url_prefix="/login")
+bp = Blueprint("login","login")
 
 from . import db
 

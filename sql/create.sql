@@ -8,7 +8,7 @@ create table task_status(
     status boolean
 );
 
-insert into task_status(name,status) values ('Yet to Start',FALSE);
+
 insert into task_status(name,status) values ('in progress',FALSE);
 insert into task_status(name,status) values ('Completed',FALSE);
 
@@ -25,7 +25,8 @@ create table tasks(
     task_name text,
     task_description text,
     added_on date,
-    due_datetime date,
+    due_date date,
+    due_time time,
     status serial references task_status(id)
     
 );

@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+
+{% block main %}
+   <p>
+      <form action={{url_for("todo.EditTask",uid=uid,tid=tid)}} method="POST">
+
+          <div class="mb-3 row">
+            <label  class="col-sm-2 col-form-label">Task Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="task_name" value={{task_name}} required>
+                </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="taskdescription" class="form-label">Task description</label>
+                <textarea rows="10" id="taskdescription" class="form-control"
+                    name="task_desc" >
+                    {{task_desc}}                        
+                </textarea>
+          </div>
+          
+          <div class="mb-3 row">
+            <label for="start">
+                Due Date:
+            </label>
+            <div class="col-sm-10">
+                <input type="datetime-local" name="due_date"  value={{due_date}} min="1997-01-01" max="2030-12-31">
+            </div>
+            </div>
+          <div class="mb-3 row">
+            <label for="start">
+                Due Time
+            </label>
+    <div class="col-sm-10">
+     <input type="time" name="due_time"  value={{due_time}} >
+    </div>
+  </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Status</label><br/>
+          {%for id, name in statuses %}
+          <div class="form-check-inline">
+            <label for="taskdescription" class="form-label" for="{{id}}_{{name}}">{{name}}</label>
+          {%if status == name %}
+          <input id="{{id}}_{{name}}" type="radio" class="form-check-input" name="status" value="{{id}}" checked>
+          {% else %}
+          <input id="{{id}}_{{name}}" type="radio" class="form-check-input" name="status" value="{{id}}" >
+          {% endif %}
+          </div>
+          {% endfor %}
+    
+          </div>
+
+          <div class="mb-3">
+            <a><button type="submit" class="btn btn-primary">Update</button>
+          </div>
+
+      </div>
+      </form>
+    </p>
+
+{% endblock %}

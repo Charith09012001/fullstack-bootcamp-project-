@@ -22,9 +22,7 @@ def create_app():
     from . import todo
     app.register_blueprint(todo.bp)
     
-    @app.route("/")
-    def frontpage():
-        return render_template("index.html")
+    
         
     
     
