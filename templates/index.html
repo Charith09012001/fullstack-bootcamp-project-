@@ -1,10 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+<head>
+
+  <meta charset="UTF-8">
   <title>ToDo Manager</title>
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{url_for('static', filename='login.css')}}" />
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -17,21 +19,12 @@
          {% endif %}  
   {% endwith %}  
   
-  
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="sidebar col-3">
-          <a href="/"><img src={{url_for('static', filename='logo.png')}}/></a>
-        </div>
-        <div class="main col-8">
+<body>  
+<div class="page-wrap gradient-primary"><
           {% block main %}
-          <h3>Welcome to ToDo List Manager</h3>
-          <a href={{url_for("login.loginform")}}><button class="btn btn-primary">Login</button></a>
-          <p>If you are here for first time,<a href={{url_for("register.register")}}><button class="btn btn-primary">Register</button></a></p>
+         
           {% endblock %}
-        </div>
-      </div>
-    </div>
-    </body>
+</div>
+</body>   
+  
 </html>

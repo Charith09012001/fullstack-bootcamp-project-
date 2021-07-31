@@ -1,15 +1,20 @@
 {% extends 'index.html' %}
 {% block main %}
-    <center><h2>WELCOME TO TODO MANAGER</h2></center>
-    <center><h3>Enter your Login Credentials below</h3></center>
-        <form action={{url_for("login.validate")}} method='post'>
-            <div class='container'>
+<link rel="stylesheet" href="{{url_for('static', filename='login.css')}}" />
+    
+
+    <center><h2 style="color:#b8ccc6;">WELCOME TO TODO MANAGER</h2></center>
+           <form action={{url_for("login.validate")}} method='post'>
+            <div class='panel' id="login">
+            <center><h3 class="h3">Enter your Login Credentials below</h3></center>
                 <label>User Mail ID :</label>
                 <input type='text' placeholder="Enter Your Mail" name="usermail" required></br>
                 <label>Password :</label>
                 <input type="password" placeholder="Enter Password" name="password" required></br>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
         </form>
-        </br><a href={{url_for("register.register")}} class="btn btn-success">Register☺️</a>
+        </br><a class="panel-footer" href={{url_for("register.register")}} >new to the app?<span>Register☺️</span></a>
+        </div>
+</div>
 {% endblock %}
 

@@ -1,34 +1,74 @@
 {% extends "index.html" %}
 {% block main %}
-          <h4 class="display-4">Your TODO List</h4>
+<style>
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 1700px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+
+</style>
+          <h5 class="display-4">Your TODO List</h5>
+          <p>You have {{tasks_due_today}} tasks due today</p>
+          <p>You have {{total_due}} tasks overdue</p>
           <p>
-            <table class="table table-striped">
+            <table class="styled-table">
               <thead class="thead-dark">
               <tr>
-                <th scope="col"> #</th>
-                <th scope="col"> Task  </th>
-                <th scope="col"> Added on  </th>
-                <th scope="col"> Due date </th>
-                <th scope="col"> Due time </th>
-                <th scope="col"> current Status </th>
-                <th scope="col"> Edit task </th>
-                <th scope="col"> Delete task </th>
+                <th style="text-align:center" scope="col"> Task  </th>
+                <th style="text-align:center" scope="col"> Added on  </th>
+                <th style="text-align:center" scope="col"> Due date </th>
+                <th style="text-align:center" scope="col"> Due time </th>
+                <th style="text-align:center" scope="col"> Status </th>                
+                <th style="text-align:center" scope="col"> Due Status </th>
+                <th style="text-align:center" scope="col"> Edit</th>
+                <th style="text-align:center" scope="col"> Delete </th>
                 
                               </tr>
               </thead>
-              {% for id,task_name, added_on, due_date,due_time,status in tasks %}
+              {% for id,task_name,added_on,due_date,due_time,status,due_status in tasks %}
+                
               <tr>              
-                <td scope="row" class="taskid" >{{id}}</td>
                 <td class="task_name">{{task_name}}</td>
                 <td class="added_on">{{added_on}}</td>
                 <td class="due_date">{{due_date}}</td>
                 <td class="due_time">{{due_time}}</td>
                 <td class="status">{{status}}</td>
+                {% if "Overdue" in due_status %}
+                <td class="status" style="color:red;">{{due_status}}</td>
+                {% else %}
+                <td class="status">{{due_status}}</td>
+                {% endif %}
                 <td class="edit_task"><a href={{url_for("todo.EditTask",uid=uid,tid=id)}}><button class="btn btn-info btn-sm">Edit Task</button></a></td>
                 <td class="delete_task"><a href={{url_for("todo.DelTask",uid=uid,tid=id)}}><button class="btn btn-danger btn-sm">Delete Task</button></a></td>
                 
-              </tr>
-              {%endfor%}
+              
+               {% endfor %}
+              
             </table>
             <a href={{url_for("todo.addtask",uid=uid)}}><button class="btn btn-primary">ADD TASK</button></a>
           </p>

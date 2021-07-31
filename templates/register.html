@@ -1,26 +1,42 @@
-{% extends 'index.html' %}
-    {% block main %}
-         
-<form action={{url_for("register.register")}} method="POST">    
-  <div class="mb-3 row">
-   <label  class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-   <input type="email" name="user_email" required>
-    </div>
-  </div>
- <div class="mb-3 row">
-   <label  class="col-sm-2 col-form-label">UserName</label>
-    <div class="col-sm-10">
-   <input type="text" name="user_name" required>
-    </div>
- </div>
-  <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" name="pass" required>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Register</button>
-  </form>
+
     
-    {% endblock %}
+{%extends "index.html" %}
+
+{% block main %}
+<link rel="stylesheet" href="{{url_for('static', filename='login.css')}}" />
+
+  <div class="grid align__item">
+
+    <div class="register">
+
+      
+ <div class='panel' id="login">
+      <h2>Sign Up</h2>
+
+      <form action={{url_for("register.register")}} method="post" class="form">
+
+        <label>User Mail ID :</label>
+          <input type="email" placeholder="info@mailaddress.com" name="user_email" required>
+        
+        <label>User Name :</label>
+        
+          <input type="text" placeholder="user name" name="user_name" required></br>
+        
+        <label>Password</label></br>
+            <input type="password" placeholder="••••••••••••" name="pass" required>
+        
+        
+
+         <button type="submit" class="btn btn-primary btn-lg btn-block">Sign up</button>
+
+      </form>
+
+      <a class="panel-footer" href={{url_for("login.loginform")}}>Already have an accout? Log in
+        </div>
+    </div>
+
+  </div>
+
+
+{% endblock %}
+

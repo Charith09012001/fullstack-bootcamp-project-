@@ -4,7 +4,8 @@ from flask import Flask,render_template,url_for,flash
 
 
 def create_app():
-    app = Flask("ToDo Manager",template_folder="Project/templates")
+    app = Flask("ToDo Manager",template_folder="Project/templates",static_folder = "/home/charith/Desktop/Project/static")
+    
     
     app.config.from_mapping(
     DATABASE = 'todo'
@@ -27,3 +28,5 @@ def create_app():
     
     
     return app
+    
+

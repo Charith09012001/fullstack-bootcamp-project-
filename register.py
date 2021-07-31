@@ -2,7 +2,7 @@ from flask import Blueprint,url_for,redirect
 from flask import render_template,request,flash
 from uuid import uuid4
 
-bp = Blueprint("register","register",url_prefix="/register")
+bp = Blueprint("register","register")
 from . import db
 
 @bp.route("/",methods=['GET','POST'])

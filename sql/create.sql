@@ -27,6 +27,8 @@ create table tasks(
     added_on date,
     due_date date,
     due_time time,
+    due_status text,
+    date_time text,
     status serial references task_status(id)
     
 );
